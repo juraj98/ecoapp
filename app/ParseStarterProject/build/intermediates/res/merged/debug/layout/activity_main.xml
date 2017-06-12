@@ -1,0 +1,242 @@
+<!--
+  ~ Copyright (c) 2015-present, Parse, LLC.
+  ~ All rights reserved.
+  ~
+  ~ This source code is licensed under the BSD-style license found in the
+  ~ LICENSE file in the root directory of this source tree. An additional grant
+  ~ of patent rights can be found in the PATENTS file in the same directory.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:id="@+id/profilePhoto"
+                android:padding="15dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="Eco App Logo"
+                android:src="@drawable/logo_main" />
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="6"
+                android:rowCount="12"
+                android:id="@+id/gridLayout"
+                android:layout_below="@+id/profilePhoto"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/nameText"
+                    android:hint="Name"
+                    android:nextFocusDown="@+id/surnameText"
+                    android:layout_row="1"
+                    android:layout_column="2" />
+
+                <EditText
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/surnameText"
+                    android:hint="Surname"
+                    android:layout_row="1"
+                    android:layout_column="3"
+                    android:nextFocusUp="@+id/nameText"
+                    android:layout_above="@+id/gridLayout"
+                    android:layout_alignLeft="@+id/menu"
+                    android:layout_alignStart="@+id/menu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nameMsg"
+                    android:layout_row="2"
+                    android:layout_column="2"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Bad Username"
+                    android:textColor="#F44336" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/surnameMsg"
+                    android:layout_row="2"
+                    android:layout_column="3"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Bad Username"
+                    android:textColor="#F44336" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/usernameText"
+                    android:hint="Username"
+                    android:layout_row="3"
+                    android:layout_column="2"
+                    android:layout_above="@+id/gridLayout"
+                    android:layout_alignLeft="@+id/menu"
+                    android:layout_alignStart="@+id/menu"
+                    android:layout_columnSpan="3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/usernameMsg"
+                    android:layout_row="4"
+                    android:layout_column="2"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Bad Username"
+                    android:textColor="#F44336" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/mailText"
+                    android:layout_row="5"
+                    android:layout_column="2"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_columnSpan="4"
+                    android:hint="E-mail"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/passText"
+                    android:layout_row="7"
+                    android:layout_column="2"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_columnSpan="4"
+                    android:hint="Password"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mailMsg"
+                    android:layout_row="6"
+                    android:layout_column="2"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Bad Username"
+                    android:textColor="#F44336" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/passMsg"
+                    android:layout_row="8"
+                    android:layout_column="2"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Bad Username"
+                    android:textColor="#F44336" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/confPassText"
+                    android:layout_row="9"
+                    android:layout_column="2"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_columnSpan="4"
+                    android:hint="Confirm Password"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/confPassMsg"
+                    android:layout_row="10"
+                    android:layout_column="2"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Passwords don&apos;t match"
+                    android:textColor="#F44336" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Register"
+                    android:id="@+id/btn"
+                    android:layout_row="11"
+                    android:layout_column="2"
+                    android:layout_columnSpan="4"
+                    android:layout_gravity="center_horizontal"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:onClick="mainBtn" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gridLayout"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/menu">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot password?"
+                    android:id="@+id/textView"
+                    android:layout_margin="5dp"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:id="@+id/switchBtn"
+                    android:layout_margin="5dp"
+                    android:onClick="switchBtn"
+                    android:padding="10dp" />
+            </GridLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressBar"
+        android:visibility="gone" />
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Juraj/Documents/Eco%20App%20V0.4/ParseStarterProject/src/main/res/layout/activity_main.xml -->

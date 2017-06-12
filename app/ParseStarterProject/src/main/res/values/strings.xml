@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2015-present, Parse, LLC.
+  ~ All rights reserved.
+  ~
+  ~ This source code is licensed under the BSD-style license found in the
+  ~ LICENSE file in the root directory of this source tree. An additional grant
+  ~ of patent rights can be found in the PATENTS file in the same directory.
+  -->
+<resources>
+    <string name="parse_app_id">1T0Bw126baBUI7E8stSggJSQInGkwWY38I97JLcA</string>
+    <string name="parse_client_key">bb0O28ioNfX5CXw4DQgez1p9mvCSLKT16C1IYYlU</string>
+
+    <string name="app_name">Eco App</string>
+
+    <string name="settings">Settings</string>
+
+    <string name="title_activity_eco_wall">Eco Wall</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="globalOrFollows">
+        <item>Global</item>
+        <item>Follows</item>
+    </string-array>
+
+    <string-array name="pointsTypes">
+        <item>Eco Points</item>
+        <item>Total Points</item>
+        <item>Support Points</item>
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

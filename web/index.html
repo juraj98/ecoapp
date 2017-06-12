@@ -1,0 +1,428 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Eco App</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css">
+    <style></style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <a target="_blank" id="googlePlayBtn" href="https://play.google.com/store/search?q=pub:Juraj Garaj">
+        <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png">
+    </a>
+    <div id="header">
+        <a href="index.html"><img src="images/logo_wide_white.png"></a>
+        <center>
+            <div id="menu">
+                <p class="menuitem" id="homeBtn">Home</p>
+                <p class="devider">|</p>
+                <p class="menuitem" id="aboutBtn">About</p>
+                <p class="devider">|</p>
+                <p class="menuitem" id="supportUsBtn">Support Us</p>
+                <p class="devider">|</p>
+                <p class="menuitem" id="contactUsBtn">Contact Us</p>
+                <p class="devider">|</p>
+                <p class="menuitem" id="usBtn">Programmers</p>
+                <p class="devider">|</p>
+                <p class="menuitem" id="downloadBtn">Download</p>
+            </div>
+        </center>
+        <div id="userArea">
+            <div id="badLogin">Bad Login</div>
+            <div id="fullscreen"></div>
+            <div id="loginBtn">
+                <div class="lbText">Log In</div>
+                <div id="lbForm">
+                    <form>
+                        <input type="text" placeholder="Username" id="username">
+                        <input type="password" placeholder="Password" id="password">
+                    </form>
+                </div>
+                <div id="lbProblem">Problem?</div>
+            </div>
+            <div id="signinBtn">
+                <div id="sbArea">
+                    <h1>Sign In</h1>
+                    <img src="images/icons/ic_clear_white_24dp_2x.png" id="sbClear">
+                    <input type="text" placeholder="Name" id="NameInput">
+                    <input type="text" placeholder="Surname" id="SurnameInput">
+                    <p id="BadName">Name can't be empty</p>
+                    <p id="BadSurname">Surname can't be empty</p>
+                    <input type="text" placeholder="Username" id="UsernameInput">
+                    <p id="BadUsername">Bad Username</p>
+                    <input type="email" placeholder="E-mail" id="EmailInput">
+                    <p id="BadEmail">Bad Email</p>
+                    <input type="password" placeholder="Password" id="PassInput">
+                    <p id="BadPass">Bad Password</p>
+                    <input type="password" placeholder="Confirm Password" id="ConfPassInput">
+                    <p id="BadConfPass">Bad Conf Password</p>
+                    <div id="sbTerms">By clicking Register you acknowledge that you have read and accepted the <u>Terms of Use Agreement</u> and consent to the <u>Privacy Policy</u>.</div>
+                </div>
+                <div class="sbText">Sign in</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main"></div>
+    <div id="mainContent">
+        <h1>Let's make world look better</h1>
+        <p>Put trash where it shoud be and make a difference. It takes no time at all. <u>Sign In</u> and start today. Or learn more about <u id="aboutBtn2">EcoApp</u> and <u id="usBtn2">Us</u>.</p>
+        <img src="images/placeholder.png">
+        <img src="images/placeholder.png">
+        <img src="images/placeholder.png">
+        <img src="images/placeholder.png">
+
+    </div>
+
+    <div class="parallexal" id="firstparallexal"></div>
+
+    <div class="bigone" id="about"></div>
+
+    <div class="parallexal"></div>
+
+    <div class="bigone" id="supportus"></div>
+
+    <div class="parallexal"></div>
+
+    <div class="bigone" id="contactus"></div>
+
+    <div class="parallexal"></div>
+
+    <div class="bigone" id="programmers"></div>
+
+    <div class="parallexal"></div>
+
+    <div class="bigone" id="download"></div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var bigLogin = false,
+                bigSignin = false;
+
+            Parse.initialize("1T0Bw126baBUI7E8stSggJSQInGkwWY38I97JLcA", "iEaPN97l7Hc8Sgw7ZoE4llTPITzeXeT8QPNWHJ8o");
+            
+            var currentUser = Parse.User.current();
+            if (currentUser) {
+                window.location.replace("ecowall.html");
+            }
+            $(window).resize(resize);
+            $('#aboutBtn').click(function () {
+                $('html, body').animate({
+                    scrollTop: $('#about').offset().top
+                }, 500);
+                return false;
+            });
+            $('#usBtn').click(function () {
+                $('html, body').animate({
+                    scrollTop: $('#programmers').offset().top
+                }, 500);
+                return false;
+            });
+            $('#aboutBtn2').click(function () {
+                $('html, body').animate({
+                    scrollTop: $('#about').offset().top
+                }, 500);
+                return false;
+            });
+            $('#usBtn2').click(function () {
+                $('html, body').animate({
+                    scrollTop: $('#programmers').offset().top
+                }, 500);
+                return false;
+            });
+            $('#contactUsBtn').click(function () {
+                $('html, body').animate({
+                    scrollTop: $('#contactus').offset().top
+                }, 500);
+                return false;
+            });
+            $('#supportUsBtn').click(function () {
+                $('html, body').animate({
+                    scrollTop: $('#supportus').offset().top
+                }, 500);
+                return false;
+            });
+            $('#homeBtn').click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#main").offset().top
+                }, 500);
+                return false;
+            });
+
+            $('#downloadBtn').click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#download").offset().top
+                }, 500);
+                return false;
+            });
+            $('#loginBtn').click(function () {
+                if (!bigLogin) {
+                    bigLogin = true;
+                    $(this).css("z-index", "15");
+                    $(this).animate({
+                        top: "0",
+                        height: "75",
+                        right: "0",
+                        width: "300"
+                    }, 500, function () {});
+                    $(".lbText").addClass("lbTextClicked");
+                    $("#lbForm").fadeIn(1000);
+                    $("#fullscreen").show();
+                    $("#lbProblem").fadeIn(1000);
+                }
+            });
+            $(".lbText").click(function () {
+                if (bigLogin) {
+                    Parse.User.logIn($("#username").val(), $("#password").val(), {
+                        success: function (user) {
+                            window.location.replace("ecowall.html");
+
+                        },
+                        error: function (user, error) {
+                            console.log("Login failed");
+                            $("#badLogin").fadeIn(500);
+                        }
+                    });
+                }
+            });
+            $('#fullscreen').click(function () {
+                bigLogin = false;
+                $("#badLogin").hide();
+                $("#lbProblem").hide();
+                $("#fullscreen").hide();
+                $("#lbForm").hide();
+                $(".lbText").removeClass("lbTextClicked");
+                $('#loginBtn').animate({
+                    top: "10px",
+                    height: "50px",
+                    right: "110px",
+                    width: "100px"
+                }, 500, function () {});
+                $(this).css("z-index", "");
+            });
+            $("#username, #password").click(function(){
+                $("#badLogin").fadeOut(500);
+            })
+            
+            $("#BadName").hide();
+            $("#NameInput").focusout(function () {
+                if ($("#NameInput").val() == "") {
+                    $("#BadName").fadeIn(500);
+                } else {
+                    $("#BadName").fadeOut(500);
+                }
+            });
+            $("#BadSurname").hide();
+            $("#SurnameInput").focusout(function () {
+                if ($("#SurnameInput").val() == "") {
+                    $("#BadSurname").fadeIn(500);
+                } else {
+                    $("#BadSurname").fadeOut(500);
+                }
+            });
+            $("#BadUsername").hide();
+            $("#UsernameInput").focusout(function () {
+                if ($("#UsernameInput").val() == "") {
+                    $("#BadUsername").fadeIn(500);
+                    $("#BadUsername").text("Username can't be empty");
+                } else if ($("#UsernameInput").val().length < 5) {
+                    $("#BadUsername").fadeIn(500);
+                    $("#BadUsername").text("Username must be at least 5 characters long");
+                } else {
+                    $("#BadUsername").fadeOut(500);
+                }
+            });
+            $("#BadEmail").hide();
+            $("#EmailInput").focusout(function () {
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if ($("#EmailInput").val() == "") {
+                    $("#BadEmail").fadeIn(500);
+                    $("#BadEmail").text("Email can't be empty");
+                } else if ($("#EmailInput").val().length != "" && !regex.test($(this).val())) {
+                    $("#BadEmail").fadeIn(500);
+                    $("#BadEmail").text("Not valid email");
+                } else {
+                    $("#BadEmail").fadeOut(500);
+                }
+            });
+            $("#BadPass").hide();
+            $("#PassInput").focusout(function () {
+                if ($("#PassInput").val().length < 5) {
+                    $("#BadPass").fadeIn(500);
+                    $("#BadPass").text("At least 5 characters");
+                } else if ($("#PassInput").val().length < 5) {
+                    $("#BadPass").fadeIn(500);
+                    $("#BadPass").text("Username must be at least 5 characters long");
+                } else {
+                    $("#BadPass").fadeOut(500);
+                }
+            });
+            $("#BadConfPass").hide();
+            $("#ConfPassInput").focusout(function () {
+                if ($("#ConfPassInput").val() == "") {
+                    $("#BadConfPass").fadeIn(500);
+                    $("#BadConfPass").text("Can't be empty");
+                } else if ($("#ConfPassInput").val() != $("#PassInput").val()) {
+                    $("#BadConfPass").fadeIn(500);
+                    $("#BadConfPass").text("Passwords don't match");
+                } else {
+                    $("#BadConfPass").fadeOut(500);
+                }
+            });
+
+            $("#sbClear").click(function () {
+                if (bigSignin) {
+                    $("#sbArea").fadeOut(500);
+                    $(".sbText").removeClass("sbTextClicked");
+                    $("#signinBtn").css("z-index", "");
+                    $("#signinBtn").animate({
+                        width: "100px",
+                        height: "50px"
+
+                    }, 500, function () {});
+                    $(".sbText").animate({
+                        left: "",
+                        top: ""
+                    }, 500);
+                    bigSignin = false;
+                }
+            });
+
+            $(".sbText").click(function () {
+                if (bigSignin) {
+                    var valid = true;
+
+                    //NAME
+                    if ($("#NameInput").val() == "") {
+                        $("#BadName").fadeIn(500);
+                        valid = false;
+                    } else {
+                        $("#BadName").fadeOut(500);
+                    }
+                    //SURNAME
+                    if ($("#SurnameInput").val() == "") {
+                        $("#BadSurname").fadeIn(500);
+                        valid = false;
+                    } else {
+                        $("#BadSurname").fadeOut(500);
+                    }
+                    //USERNAME
+                    if ($("#UsernameInput").val() == "") {
+                        $("#BadUsername").fadeIn(500);
+                        $("#BadUsername").text("Username can't be empty");
+                        valid = false;
+                    } else if ($("#UsernameInput").val().length < 5) {
+                        $("#BadUsername").fadeIn(500);
+                        $("#BadUsername").text("Username must be at least 5 characters long");
+                        valid = false;
+                    } else {
+                        $("#BadUsername").fadeOut(500);
+                    }
+                    //EMAIL
+                    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    if ($("#EmailInput").val() == "") {
+                        $("#BadEmail").fadeIn(500);
+                        $("#BadEmail").text("Email can't be empty");
+                        valid = false;
+                    } else if (!regex.test($("#EmailInput").val())) {
+                        $("#BadEmail").fadeIn(500);
+                        $("#BadEmail").text("Not valid email");
+                        valid = false;
+                    } else {
+                        $("#BadEmail").fadeOut(500);
+                    }
+                    //PASSWORD
+                    if ($("#PassInput").val().length < 5) {
+                        $("#BadPass").fadeIn(500);
+                        $("#BadPass").text("At least 5 characters");
+                        valid = false;
+                    } else if ($("#PassInput").val().length < 5) {
+                        $("#BadPass").fadeIn(500);
+                        $("#BadPass").text("Username must be at least 5 characters long");
+                        valid = false;
+                    } else {
+                        $("#BadPass").fadeOut(500);
+                    }
+                    //CONFPASS
+                    if ($("#ConfPassInput").val() == "") {
+                        $("#BadConfPass").fadeIn(500);
+                        $("#BadConfPass").text("Can't be empty");
+                        valid = false;
+                    } else if ($("#ConfPassInput").val() != $("#PassInput").val()) {
+                        $("#BadConfPass").fadeIn(500);
+                        $("#BadConfPass").text("Passwords don't match");
+                        valid = false;
+                    } else {
+                        $("#BadConfPass").fadeOut(500);
+                    }
+                    if (valid) {
+                        var regUser = new Parse.User();
+                        var username = $("#UsernameInput").val(),
+                            password = $("#PassInput").val(),
+                            email = $("#EmailInput").val(),
+                            name = $("#NameInput").val(),
+                            surname = $("#SurnameInput").val();
+
+                        console.log("username " + username + " password " + password + " mail " + email + " name " + name + " surname " + surname);
+
+
+                        regUser.set("username", username);
+                        regUser.set("password", password);
+                        regUser.set("email", email);
+
+                        regUser.set("name", name);
+                        regUser.set("surname", surname);
+
+                        regUser.signUp(null, {
+                            success: function (user) {
+                                alert("Signup succesful");
+                            },
+                            error: function (user, error) {
+                                // Show the error message somewhere and let the user try again.
+                                alert("Error: " + error.code + " " + error.message);
+                            }
+                        });
+                    } else {
+                        console.log("Signup not valid");
+                    }
+                } else {
+                    bigSignin = true;
+                    $("#signinBtn").css("z-index", "15");
+                    $("#signinBtn").animate({
+                        width: "300px",
+                        height: "450px"
+
+                    }, 500, function () {});
+                    $(".sbText").animate({
+                        left: "100px",
+                        top: "390px"
+                    }, 500, function () {
+                        $(".sbText").addClass("sbTextClicked");
+                        $("#sbArea").fadeIn(500);
+                    });
+                }
+            });
+
+            function resize() {
+                console.log("Resize");
+                $("#mainContent").css("top", ($("#main").height() - $("#mainContent").height()) / 2 + "px");
+                $("#mainContent").css("left", ($("#main").width() - $("#mainContent").width()) / 2 + "px");
+                $("#menu").css("left", ($("#header").width() - $("#logo").width() - $("#menu").width()) / 2 + "px");
+                $("#menu").css("top", ($("#header").height() - $("#menu").height()) / 2 + "px");
+            }
+
+            resize();
+
+        });
+    </script>
+</body>
+
+</html>

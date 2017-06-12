@@ -1,0 +1,240 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Eco App</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <a target="_blank" id="googlePlayBtn" href="https://play.google.com/store/search?q=pub:Juraj Garaj">
+        <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png">
+    </a>
+    <div id="header">
+        <a href="index.html"><img src="images/logo_wide_white.png"></a>
+        <center>
+            <div id="menu">
+                <p class="menuitem ecowallBtn" id="active">Eco Wall</p>
+                <p class="devider">|</p>
+                <p class="menuitem profileBtn">Profile</p>
+                <p class="devider">|</p>
+                <p class="menuitem owBtn">Overwatch</p>
+                <p class="devider">|</p>
+                <p class="menuitem suBtn">Support Us</p>
+                <p class="devider">|</p>
+                <p class="menuitem cuBtn">Contact Us</p>
+            </div>
+        </center>
+        <div id="userArea">
+            <div id="logoffBtn">Log Off</div>
+        </div>
+    </div>
+    <div id="ecowallContent">
+        <div id="friendsFeed">
+            <img src="images/placeholder.png">
+            <img src="images/placeholder.png">
+            <img src="images/placeholder.png">
+            <img src="images/placeholder.png">
+            <img src="images/placeholder.png">
+            <img src="images/placeholder.png">
+        </div>
+        <div id="status">
+            <p id="rank">Rank: *Rank*</p>
+            <p id="ecoPoints">Eco-Points: *0*</p>
+            <p id="supportPoints">Support-Points: *0*</p>
+            <p id="streak">Streak-Points: *0*</p>
+        </div>
+        <div id="friendRequests">
+
+
+        </div>
+        <div id="achivements"></div>
+        <div id="comunity"></div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Parse.initialize("1T0Bw126baBUI7E8stSggJSQInGkwWY38I97JLcA", "iEaPN97l7Hc8Sgw7ZoE4llTPITzeXeT8QPNWHJ8o");
+            $(window).resize(resize);
+
+            //Parse Status set up
+            $("#streak").html("Rank: " + "*rank*");
+            $("#ecoPoints").html("Eco-Points: " + Parse.User.current().get("ecoPoints"));
+            $("#supportPoints").html("Support-Points: " + Parse.User.current().get("SupportPoints"));
+            $("#streak").html("Streak: " + "*Streak*");
+            //Parse Friend request set up
+            var Friendships = Parse.Object.extend("Friendships");
+            var friendRequests = "";
+
+            var ffQuery = new Parse.Query(Friendships); //First query for 1. column
+            ffQuery.equalTo("userOne", Parse.User.current().id);
+            ffQuery.equalTo("userOneAgreed", false);
+            ffQuery.equalTo("userOneShow", true);            
+
+            var sfQuery = new Parse.Query(Friendships); //First query for 2. column
+            sfQuery.equalTo("userTwo", Parse.User.current().id);
+            sfQuery.equalTo("userTwoAgreed", false);
+            sfQuery.equalTo("userTwoShow", true);
+
+            var mfQuery = Parse.Query.or(ffQuery, sfQuery); //Main query
+            mfQuery.find({
+                success: function (results) {
+                    //If no results
+                    if (results.length == 0) {
+                        friendRequests = '<p id="foreverAlone">No new friend requests</p>';
+                        $("#friendRequests").html(friendRequests);
+
+                    }
+                    //If results
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+
+                        if (object.get("userOne") == Parse.User.current().id) {
+                            var Users = Parse.Object.extend(Parse.User);
+                            var uQuery = new Parse.Query(Users);
+                            uQuery.equalTo("objectId", object.get("userTwo"));
+
+                            uQuery.first({
+                                success: function (userObject) {
+                                    console.log("Work");
+                                    friendRequests += '<div id="newRequest"><img src="images/placeholder.png"><div id="data"><h1>' + userObject.get("username") + '</h1><h2>' + userObject.get("name") + " " + userObject.get("surname") + '</h2></div><div class="delete" value="' + userObject.id + '">Delete</div><div class="accept" value="' + userObject.id + '">Accept</div></div>';
+                                },
+                                error: function (error) {
+                                    console.log(error);
+                                }
+                            }).then(function () {
+                                console.log("Working");
+                                $("#friendRequests").html(friendRequests + "");
+                            });
+                        } else {
+                            var Users = Parse.Object.extend(Parse.User);
+                            var uQuery = new Parse.Query(Users);
+                            uQuery.equalTo("objectId", object.get("userOne"));
+
+                            uQuery.first({
+                                success: function (userObject) {
+                                    console.log("Work");
+                                    friendRequests += '<div id="newRequest"><img src="images/placeholder.png"><div id="data"><h1>' + userObject.get("username") + '</h1><h2>' + userObject.get("name") + " " + userObject.get("surname") + '</h2></div><div class="delete" value="' + userObject.id + '">Delete</div><div class="accept" value="' + userObject.id + '">Accept</div></div>';
+                                },
+                                error: function (error) {
+                                    console.log(error);
+                                }
+                            }).then(function () {
+                                console.log("Working");
+                                $("#friendRequests").html(friendRequests + "");
+                            });
+                        }
+                    }
+                },
+                error: function (error) {}
+            });
+            $(".accept").live("click", function () {
+                var friend = ($(this).attr("value"));
+
+                var uffQuery = new Parse.Query(Friendships); //First query for 1. column
+                uffQuery.equalTo("userOne", friend);
+                uffQuery.equalTo("userTwo", Parse.User.current().id);
+
+                var usfQuery = new Parse.Query(Friendships); //First query for 2. column
+                usfQuery.equalTo("userTwo", friend);
+                usfQuery.equalTo("userOne", Parse.User.current().id);
+
+                var umfQuery = Parse.Query.or(ffQuery, sfQuery); //Main query
+
+                umfQuery.first({
+                    success: function (updateFriendObject) {
+                        if(updateFriendObject.get("userOne") == Parse.User.current().id){
+                            updateFriendObject.set("userOneAgreed", true);
+                            updateFriendObject.save();
+                        }
+                        else {
+                            updateFriendObject.set("userTwoAgreed", true);
+                            updateFriendObject.save();
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+                $(this).parent().remove();
+                if ($("#friendRequests > *").length == 0){
+                    console.log("working");
+                    $("#friendRequests").html('<p id="foreverAlone">No new friend requests</p>');
+                }
+
+            });
+            $(".delete").live("click", function () {
+                var friend = ($(this).attr("value"));
+
+                var uffQuery = new Parse.Query(Friendships); //First query for 1. column
+                uffQuery.equalTo("userOne", friend);
+                uffQuery.equalTo("userTwo", Parse.User.current().id);
+
+                var usfQuery = new Parse.Query(Friendships); //First query for 2. column
+                usfQuery.equalTo("userTwo", friend);
+                usfQuery.equalTo("userOne", Parse.User.current().id);
+
+                var umfQuery = Parse.Query.or(ffQuery, sfQuery); //Main query
+
+                umfQuery.first({
+                    success: function (updateFriendObject) {
+                        if(updateFriendObject.get("userOne") == Parse.User.current().id){
+                            updateFriendObject.set("userOneShow", false);
+                            updateFriendObject.save();
+                        }
+                        else {
+                            updateFriendObject.set("userTwoShow", false);
+                            updateFriendObject.save();
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+                $(this).parent().remove();
+                if ($("#friendRequests > *").length == 0){
+                    console.log("working");
+                    $("#friendRequests").html('<p id="foreverAlone">No new friend requests</p>');
+                }
+            });
+
+
+            $("#logoffBtn").click(function () {
+                Parse.User.logOut();
+                window.location.replace("index.html");
+            });
+            $(".profileBtn").click(function () {
+                window.location.replace("profile.html?user=" + Parse.User.current().id);
+            });
+            $(".ecowallBtn").click(function () {
+                window.location.replace("ecowall.html");
+            });
+            $(".owBtn").click(function () {
+                window.location.replace("overwatch.html");
+            });
+
+            function resize() {
+                console.log("Resize");
+                $("#menu").css("left", ($("#header").width() - $("#logo").width() - $("#menu").width()) / 2 + "px");
+                $("#menu").css("top", ($("#header").height() - $("#menu").height()) / 2 + "px");
+                $("#friendsFeed").height($("#status").height() + $("#friendRequests").height() + $("#achivements").height() + $("#comunity").height());
+
+
+            }
+
+            resize();
+
+        });
+    </script>
+</body>
+
+</html>

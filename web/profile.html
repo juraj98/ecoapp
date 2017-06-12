@@ -1,0 +1,349 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Eco App - Profile</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="imageZoomArea">
+        <div id="imageZoomBg"></div>
+        <img id="smallImg" src="images/placeholder.png">
+    </div>
+    <a target="_blank" id="googlePlayBtn" href="https://play.google.com/store/search?q=pub:Juraj Garaj">
+        <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png">
+    </a>
+    <div id="header">
+        <a href="index.html"><img src="images/logo_wide_white.png"></a>
+        <center>
+            <div id="menu">
+                <p class="menuitem ecowallBtn">Eco Wall</p>
+                <p class="devider">|</p>
+                <p class="menuitem profileBtn">Profile</p>
+                <p class="devider">|</p>
+                <p class="menuitem owBtn">Overwatch</p>
+                <p class="devider">|</p>
+                <p class="menuitem suBtn">Support Us</p>
+                <p class="devider">|</p>
+                <p class="menuitem cuBtn">Contact Us</p>
+            </div>
+        </center>
+        <div id="userArea">
+            <div id="logoffBtn">Log Off</div>
+        </div>
+    </div>
+
+    <div id="profileArea">
+        <div id="mainProfile">
+            <img id="profilePic" src="images/placeholder.png">
+            <div id="SecretBoxArea"></div>
+            <div id="data">
+                <h1 id="username">Username</h1>
+                <h2 id="ecoPoints">0 EcoPoints</h2>
+                <h2 id="supportPoints">10 SupportPoints</h2>
+                <h3 id="name">Name:</h3>
+                <h3 id="surname">Surname:</h3>
+                <h3 id="email">E-mail:</h3>
+                <h3 id="location">Location:</h3>
+                <h3 id="web"></h3>
+                <div id="addFriend"> Add friend <img src="images/icons/ic_person_add_white_24dp_1x.png"></div>
+                <br>
+                <br>
+                <div id="blockPerson" hidden> Block <img src="images/icons/ic_block_white_24dp_1x.png"></div>
+            </div>
+            <div id="achivements">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+                <img src="images/placeholder.png">
+            </div>
+        </div>
+        <div id="profileGallery">
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Parse.initialize("1T0Bw126baBUI7E8stSggJSQInGkwWY38I97JLcA", "iEaPN97l7Hc8Sgw7ZoE4llTPITzeXeT8QPNWHJ8o");
+
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            };
+            $(".zoomImg").live("click", function () {
+                console.log("ZoomImg Clicked");
+                toogleImgZoom($(this).attr("src"));
+            });
+
+            $(window).resize(resize);
+
+            var userProfileId = getParameterByName("user");
+
+            //If no user for profile
+            if (userProfileId == undefined) {
+                //TODO: NO USER FOUND ERROR
+                window.location.replace("ecowall.html");
+            }
+            //CHECK IF USER EXISTS
+            var ueQuery = new Parse.Query(Parse.User);
+            console.log(userProfileId);
+            ueQuery.equalTo("objectId", userProfileId);
+            ueQuery.first({
+                success: function (object) {
+                    console.log(object);
+                    if (object != undefined) {
+                        console.log("User found");
+                        if(userProfileId == Parse.User.current().id){
+                            $(".profileBtn").attr("id","active");
+                        }
+                    } else {
+                        window.location.replace("ecowall.html");
+                        console.log("No user with id " + userProfileId + " found.");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            }).then(function () {
+
+
+                //DOWNLOAD GALLERY
+                var galery = "";
+                var Photos = Parse.Object.extend("images");
+                var iQuery = new Parse.Query(Photos);
+
+                iQuery.equalTo("username", userProfileId);
+
+                iQuery.find({
+                    success: function (results) {
+                        for (var i = 0; i < results.length; i++) {
+                            var object = results[i];
+                            galery += '<img class="zoomImg" src="';
+                            galery += object.get('image').url();
+                            galery += '">';
+                        }
+                        $("#profileGallery").html(galery);
+
+                        $('#profileGallery  > .zoomImg').each(function () {
+                            $(this).on('load', function () {
+                                $(this).css("padding-top", (246 - $(this).height()) / 2 + "px");
+                                $(this).css("padding-bottom", (246 - $(this).height()) / 2 + "px");
+                                $(this).css("padding-left", (246 - $(this).width()) / 2 + "px");
+                                $(this).css("padding-right", (246 - $(this).width()) / 2 + "px");
+                            });
+                        });
+                    },
+                    error: function (error) {
+                        alert("Error: " + error.code + " " + error.message);
+                    }
+                });
+                //Check if freinds||request sent
+                if (userProfileId == Parse.User.current().id) {
+                    $("#addFriend").remove();
+                    $("#blockPerson").remove();
+                } else {
+                    var Friendships = Parse.Object.extend("Friendships");
+
+                    var friendshipRequestAllowed = true;
+                    var friendshipAgree = false;
+
+                    var ffsQuery = new Parse.Query(Friendships);
+
+                    ffsQuery.equalTo("userOne", Parse.User.current().id);
+                    ffsQuery.equalTo("userTwo", userProfileId);
+
+                    var sfsQuery = new Parse.Query(Friendships);
+
+                    sfsQuery.equalTo("userTwo", Parse.User.current().id);
+                    sfsQuery.equalTo("userOne", userProfileId);
+
+                    var mfsQuery = Parse.Query.or(ffsQuery, sfsQuery);
+
+                    mfsQuery.first({
+                        success: function (object) {
+                            //If no data found
+                            if (object == undefined) {
+                                console.log("No friendship data");
+                            }
+                            //If both users agreed and are friends
+                            else if (object.get("userOneAgreed") && object.get("userTwoAgreed")) {
+                                $("#addFriend").html("Already friends");
+                                friendshipRequestAllowed = false;
+                            }
+                            //If user already sent request 
+                            else if (object.get("userOne") == Parse.User.current().id && object.get("userOneAgreed") && !object.get("userTwoAgreed")) {
+                                $("#addFriend").html(' Request sent <img src="images/icons/ic_person_add_white_24dp_1x.png">');
+                                friendshipRequestAllowed = false;
+                            } else if (object.get("userTwo") == Parse.User.current().id && object.get("userTwoAgreed") && !object.get("userOneAgreed")) {
+                                $("#addFriend").html(' Request sent <img src="images/icons/ic_person_add_white_24dp_1x.png">');
+                                friendshipRequestAllowed = false;
+                            }
+                            //If user not agreed to request, but get it
+                            else if (object.get("userOne") == Parse.User.current().id && !object.get("userOneAgreed") && object.get("userTwoAgreed")) {
+                                $("#addFriend").html('Accept request <img src="images/icons/ic_person_add_white_24dp_1x.png">');
+                                friendshipAgree = true;
+                            } else if (object.get("userTwo") == Parse.User.current().id && !object.get("userTwoAgreed") && object.get("userOneAgreed")) {
+                                $("#addFriend").html('Accept request <img src="images/icons/ic_person_add_white_24dp_1x.png">');
+                                friendshipAgree = true;
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+                //Get user's info
+                var Users = Parse.Object.extend("_User");
+                var query = new Parse.Query(Users);
+                query.equalTo("objectId", userProfileId);
+                query.find({
+                    success: function (results) {
+                        var object = results[0];
+
+                        $("#username").html(object.get("username"));
+                        $("#ecoPoints").html(object.get("ecoPoints") + " EcoPoints");
+                        $("#supportPoints").html(object.get("SupportPoints") + " SupportPoints");
+                        $("#name").html("Name: " + object.get("name"));
+                        $("#surname").html("Surname: " + object.get("surname"));
+                        $("#email").html("E-mail: " + object.get("email"));
+                        $("#location").html("Location: " + object.get("location"));
+                        $("#web").html("Web: " + object.get("website"));
+                        if (object.get("profilePic") != undefined) {
+                            console.log("Profile pic defined");
+                            var pic = object.get("profilePic");
+                            $("#profilePic").attr('src', pic.url());
+                        } else {
+                            console.log("Profile pic undefined");
+                            $("#profilePic").attr('src', "images/placeholderProfilePic.png");
+                        }
+                    },
+                    error: function (error) {
+                        alert("Error: " + error.code + " " + error.message);
+                    }
+                });
+
+
+                $("#addFriend").live("click", function () { //If clicked add button
+
+                    //If !sameUser && friendshipRequestAllowd
+                    if (Parse.User.current().id != userProfileId && friendshipRequestAllowed) {
+                        var newFriendship = new Friendships();
+
+                        newFriendship.set("userOne", Parse.User.current().id);
+                        newFriendship.set("userTwo", userProfileId);
+                        newFriendship.set("userOneAgreed", true);
+                        newFriendship.set("userTwoAgreed", false);
+                        newFriendship.set("userOneShow", true);
+                        newFriendship.set("userTwoShow", true);
+
+                        newFriendship.save({
+                            success: function () {
+                                $("#addFriend").html(' Request sent <img src="images/icons/ic_person_add_white_24dp_1x.png">');
+                            },
+                            error: function (error) {
+                                alert("Error: " + error.message);
+                            }
+                        });
+
+                    }
+                    //If user recieved friendship request
+                    else if (Parse.User.current().id != userProfileId && friendshipAgree) {
+
+                        var fNewFriendshipQuery = new Parse.Query(Friendships);
+                        fNewFriendshipQuery.equalTo("userTwo", Parse.User.current().id);
+                        fNewFriendshipQuery.equalTo("userOne", userProfileId);
+
+                        var sNewFriendshipQuery = new Parse.Query(Friendships);
+                        sNewFriendshipQuery.equalTo("userOne", Parse.User.current().id);
+                        sNewFriendshipQuery.equalTo("userTwo", userProfileId);
+
+                        var mNewFriendshipQuery = new Parse.Query.or(fNewFriendshipQuery, sNewFriendshipQuery);
+                        newFriendshipQuery.first({
+                            success: function (object) {
+                                object.set("userOneAgreed", true);
+                                object.set("userTwoAgreed", true);
+                                object.save({
+                                    success: function () {
+
+                                    },
+                                    function (error) {
+                                        console.log(error);
+                                    }
+                                });
+                            },
+                            error: function (error) {
+                                console.log(error);
+                            }
+                        });
+                    }
+                });
+
+                $("#logoffBtn").click(function () {
+                    Parse.User.logOut();
+                    window.location.replace("index.html");
+                });
+                $(".profileBtn").click(function () {
+                    window.location.replace("profile.html?user=" + Parse.User.current().id);
+                });
+                $(".ecowallBtn").click(function () {
+                    window.location.replace("ecowall.html");
+                });
+                $(".owBtn").click(function () {
+                    window.location.replace("overwatch.html");
+                });
+            });
+
+            function resize() {
+                console.log("Resize");
+                $("#menu").css("left", ($("#header").width() - $("#logo").width() - $("#menu").width()) / 2 + "px");
+                $("#menu").css("top", ($("#header").height() - $("#menu").height()) / 2 + "px");
+            }
+
+            resize();
+
+
+            //ZOOM
+            var imgDisplayed = false;
+            $(".zoomImg").click(function () {
+                console.log("ZoomImg Clicked");
+                toogleImgZoom($(this).attr("src"));
+            });
+            $("#imageZoomBg").click(function () {
+                toogleImgZoom("@@hide@@");
+            });
+
+            toogleImgZoom("@@hide@@");
+
+            function toogleImgZoom(source) {
+                if (imgDisplayed || source == "@@hide@@") {
+                    imgDisplayed = false;
+                    $("#imageZoomArea").hide();
+                } else {
+                    imgDisplayed = true;
+                    $("#smallImg").attr("src", source);
+                    $("#imageZoomArea").show();
+                    $("#smallImg").css("top", ($(window).height() - $("#smallImg").height()) / 2 + "px");
+                    $("#smallImg").css("left", ($(window).width() - $("#smallImg").width()) / 2 + "px");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,403 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ecoapp.StampsFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/stampsEcoPointsCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/ecoPointsStampsRelativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/stampsEcoPointsHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Eco Points"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp" />
+
+                    <ImageView
+                        android:id="@+id/stampEcoPoints1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsEcoPointsHeader"
+                        android:layout_toLeftOf="@+id/stampEcoPoints5"
+                        android:layout_toStartOf="@+id/stampEcoPoints5" />
+
+                    <ImageView
+                        android:id="@+id/stampEcoPoints5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsEcoPointsHeader"
+                        android:layout_toLeftOf="@+id/stampEcoPoints10"
+                        android:layout_toStartOf="@+id/stampEcoPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampEcoPoints10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsEcoPointsHeader"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageView
+                        android:id="@+id/stampEcoPoints25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsEcoPointsHeader"
+                        android:layout_toRightOf="@+id/stampEcoPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampEcoPoints50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsEcoPointsHeader"
+                        android:layout_toRightOf="@+id/stampEcoPoints25" />
+
+                    <ImageView
+                        android:id="@+id/stampEcoPoints100"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/stampEcoPoints1"
+                        android:layout_alignStart="@+id/stampEcoPoints1"
+                        android:layout_below="@+id/stampEcoPoints1" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/totalPointsCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stampsEcoPointsCardView"
+                android:layout_margin="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/totalPointsStampsRelativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/stampsTotalPointsHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total Points"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampTotalPoints5"
+                        android:layout_toLeftOf="@+id/stampTotalPoints5"
+                        android:layout_toStartOf="@+id/stampTotalPoints5" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampTotalPoints10"
+                        android:layout_toLeftOf="@+id/stampTotalPoints10"
+                        android:layout_toStartOf="@+id/stampTotalPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampTotalPoints25"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsTotalPointsHeader"
+                        android:layout_toRightOf="@+id/stampTotalPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsTotalPointsHeader"
+                        android:layout_toEndOf="@+id/stampTotalPoints1000"
+                        android:layout_toRightOf="@+id/stampTotalPoints1000" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints100"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/stampTotalPoints1"
+                        android:layout_alignStart="@+id/stampTotalPoints1"
+                        android:layout_below="@+id/stampTotalPoints1" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints250"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampTotalPoints5"
+                        android:layout_toLeftOf="@+id/stampTotalPoints10"
+                        android:layout_toStartOf="@+id/stampTotalPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints500"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampTotalPoints5"
+                        android:layout_toEndOf="@+id/stampTotalPoints5"
+                        android:layout_toRightOf="@+id/stampTotalPoints5" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints1000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampTotalPoints10"
+                        android:layout_toEndOf="@+id/stampTotalPoints10"
+                        android:layout_toRightOf="@+id/stampTotalPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints2500"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/stampTotalPoints10000"
+                        android:layout_toEndOf="@+id/stampTotalPoints1000"
+                        android:layout_toRightOf="@+id/stampTotalPoints1000" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints5000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/stampTotalPoints100"
+                        android:layout_alignStart="@+id/stampTotalPoints100"
+                        android:layout_below="@+id/stampTotalPoints100" />
+
+                    <ImageView
+                        android:id="@+id/stampTotalPoints10000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampTotalPoints100"
+                        android:layout_toEndOf="@+id/stampTotalPoints100"
+                        android:layout_toRightOf="@+id/stampTotalPoints100" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/supportPointsCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/totalPointsCardView"
+                android:layout_margin="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/supportPointsStampsRelativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/stampsSupportPointsHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Support Points"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsSupportPointsHeader"
+                        android:layout_toLeftOf="@+id/stampSupportPoints5"
+                        android:layout_toStartOf="@+id/stampSupportPoints5" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampSupportPoints10"
+                        android:layout_toLeftOf="@+id/stampSupportPoints10"
+                        android:layout_toStartOf="@+id/stampSupportPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsSupportPointsHeader"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsSupportPointsHeader"
+                        android:layout_toEndOf="@+id/stampSupportPoints500"
+                        android:layout_toRightOf="@+id/stampSupportPoints500" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsSupportPointsHeader"
+                        android:layout_toEndOf="@+id/stampSupportPoints25"
+                        android:layout_toRightOf="@+id/stampSupportPoints25" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints100"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/stampSupportPoints1"
+                        android:layout_alignStart="@+id/stampSupportPoints1"
+                        android:layout_below="@+id/stampSupportPoints1" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints250"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampSupportPoints5"
+                        android:layout_toLeftOf="@+id/stampSupportPoints10"
+                        android:layout_toStartOf="@+id/stampSupportPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints500"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/stampSupportPoints10"
+                        android:layout_alignStart="@+id/stampSupportPoints10"
+                        android:layout_below="@+id/stampSupportPoints10" />
+
+                    <ImageView
+                        android:id="@+id/stampSupportPoints1000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampSupportPoints10"
+                        android:layout_toEndOf="@+id/stampSupportPoints10"
+                        android:layout_toRightOf="@+id/stampSupportPoints10" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/streakCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/supportPointsCardView"
+                android:layout_margin="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/streakStampsRelativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/stampsStreakHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Max Streak"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp" />
+
+                    <ImageView
+                        android:id="@+id/stampStreak7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampStreak30"
+                        android:layout_toLeftOf="@+id/stampStreak30"
+                        android:layout_toStartOf="@+id/stampStreak30" />
+
+                    <ImageView
+                        android:id="@+id/stampStreak30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampStreak122"
+                        android:layout_toLeftOf="@+id/stampStreak122"
+                        android:layout_toStartOf="@+id/stampStreak122" />
+
+                    <ImageView
+                        android:id="@+id/stampStreak122"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampStreak183"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageView
+                        android:id="@+id/stampStreak183"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/stampStreak365"
+                        android:layout_toEndOf="@+id/stampStreak122"
+                        android:layout_toRightOf="@+id/stampStreak122" />
+
+                    <ImageView
+                        android:id="@+id/stampStreak365"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/stampsStreakHeader"
+                        android:layout_toEndOf="@+id/stampStreak183"
+                        android:layout_toRightOf="@+id/stampStreak183" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@+id/streakCardView"/>
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/stampLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/stamp_shape"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/stampImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/progressBar"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/progressBar"
+            android:src="@drawable/placeholderprofilepic" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical|right"
+            android:padding="0dp"
+            android:text="Stamp Unlocked!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorIconsText"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+</RelativeLayout>
+<!-- From: file:/C:/Users/Juraj/Documents/Eco%20App%20V0.4/ParseStarterProject/src/main/res/layout/fragment_stamps.xml -->

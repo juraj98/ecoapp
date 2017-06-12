@@ -1,0 +1,293 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Eco App</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="imageZoomArea">
+        <div id="imageZoomBg"></div>
+        <img id="smallImg" src="images/placeholder.png">
+    </div>
+    <div id="header">
+        <a href="index.html"><img src="images/logo_wide_white.png"></a>
+        <center>
+            <div id="menu">
+                <p class="menuitem ecowallBtn">Eco Wall</p>
+                <p class="devider">|</p>
+                <p class="menuitem profileBtn">Profile</p>
+                <p class="devider">|</p>
+                <p class="menuitem owBtn" id="active">Overwatch</p>
+                <p class="devider">|</p>
+                <p class="menuitem suBtn">Support Us</p>
+                <p class="devider">|</p>
+                <p class="menuitem cuBtn">Contact Us</p>
+            </div>
+        </center>
+        <div id="userArea">
+        </div>
+    </div>
+    <div id="overwatchContent">
+
+    </div>
+    <!--
+        <div class="overwatchItem">
+            <div class="images">
+                <img src="images/placeholder.png" class="mainImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+                <img src="images/placeholder.png" class="secoundaryImg zoomImg">
+            </div>
+            <div class="stats">
+                <table>
+                    <tbody><tr>
+                        <td>Username:</td>
+                        <td>*username*</td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td>*date*</td>                    
+                    </tr>
+                    <tr>
+                        <td>Location:</td>
+                        <td>*location*</td>                    
+                    </tr>
+                    <tr>
+                        <td>Rank:</td>
+                        <td>*rank*</td>                    
+                    </tr>
+                    <tr>
+                        <td>Eco-Points:</td>
+                        <td>*ecopoints*</td>                    
+                    </tr>
+                    <tr>
+                        <td>Karma-Points:</td>
+                        <td>*ecopoints*</td>                    
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+<div class="controlPanel">
+<div class="validBtn"></div>
+<div class="notValidBtn"></div>
+<div class="skipBtn"></div>
+    
+</div>
+    -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Parse.initialize("1T0Bw126baBUI7E8stSggJSQInGkwWY38I97JLcA", "iEaPN97l7Hc8Sgw7ZoE4llTPITzeXeT8QPNWHJ8o");
+            var currentUser = Parse.User.current();
+            if (currentUser) {
+                console.log("User logged in");
+            } else {
+                console.log("User isn't logged in");
+                console.log("Redirecting");
+                window.location.replace("index.html");
+            }
+
+            var imgDisplayed = false;
+            $(".zoomImg").live("click", function () {
+                toogleImgZoom($(this).attr("src"));
+            });
+            $("#imageZoomBg").click(function () {
+                toogleImgZoom("@@hide@@");
+            });
+            toogleImgZoom("@@hide@@");
+
+            function toogleImgZoom(source) {
+                if (imgDisplayed || source == "@@hide@@") {
+                    imgDisplayed = false;
+                    $("#imageZoomArea").hide();
+                } else {
+                    imgDisplayed = true;
+                    $("#smallImg").attr("src", source);
+                    $("#imageZoomArea").show();
+                    $("#smallImg").css("top", ($(window).height() - $("#smallImg").height()) / 2 + "px");
+                    $("#smallImg").css("left", ($(window).width() - $("#smallImg").width()) / 2 + "px");
+                }
+            }
+
+            $(window).resize(resize);
+
+
+            //==============================
+            var qIndex = 0;
+            var owItems = "";
+
+            var Images = Parse.Object.extend("images");
+            var owQuery = new Parse.Query(Images);
+
+            owQuery.notEqualTo("username", Parse.User.current().id);
+            owQuery.lessThan("likes", 6);
+            owQuery.lessThan("dislikes", 6);
+
+            owQuery.find().then(function (results) {
+                console.log("First Query Successful, with " + results.length + " results");
+                var i = 0;
+                loop1(i);
+                function loop1(i) {
+                    if (i < results.length) {
+                        console.log("Looping #" + i);
+
+                        var imgObject = results[i]; //Assiging result to variable
+                        var userId = imgObject.get("username"); //Saving uId to variable
+
+                        var Users = Parse.Object.extend("_User"); //Creating new Parse Object(Users)
+
+                        var uQuery = new Parse.Query(Users); //Creating query for user
+                        uQuery.equalTo("objectId", userId); //Setting conditions for query;
+
+                        uQuery.first().then(function (userObject) {
+
+                            console.log("Secound Query Successful");
+
+                            var oiQuery = new Parse.Query(Images); //Creating new Parse Object(Images)
+
+                            //setting conditions
+                            oiQuery.notEqualTo("objectId", imgObject.get("objectId"));
+                            oiQuery.equalTo("username", userObject.get("objectId"));
+                            oiQuery.limit(5);
+
+                            oiQuery.find().then(function (imgResults) {
+
+                                //Console log
+                                console.log("Third Query Successful");
+
+                                var j = 0;
+
+                                //Set main image
+                                owItems += '<div class="overwatchItem"><div class="images"><img src="';
+                                console.log("imgObject: ");
+                                console.log(imgObject);
+                                owItems += imgObject.get("image").url();
+                                owItems += '" class="mainImg zoomImg">';
+
+                                j++;
+                                for (j; j <= 7; j++) {
+                                    //Adding secoundary images
+                                    if (i < imgResults.length) {
+                                        //Console log
+                                        console.log("Getting secoudary object #" + i);
+
+                                        //Adding Images
+                                        var oiObject = results[i];
+                                        owItems += '<img src="';
+                                        owItems += oiObject.get("image").url();
+                                        owItems += '" class="secoundaryImg zoomImg">';
+                                    } else {
+                                        //If no other image add placeholder 
+                                        owItems += '<img src="images/placeholderProfilePic.png" class="secoundaryImg zoomImg">';
+                                    }
+                                }
+                                //Adding stuff
+                                owItems += '</div><div class="stats"><table><tbody>';
+                                //Adding username
+                                owItems += '<tr><td>Username:</td><td>';
+                                owItems += userObject.get("username");
+                                owItems += '</td></tr>';
+
+                                //Adding date
+                                owItems += '<tr><td>Date:</td><td>';
+                                var date = imgObject.get("createdAt");
+                                owItems += date.getHours() + ":" + date.getMinutes() + " " + date.getDay() + "." + date.getMonth() + "." + date.getFullYear();
+                                owItems += '</td></tr>';
+
+                                //Adding location
+                                owItems += '<tr><td>Location:</td><td>';
+                                owItems += userObject.get("location");
+                                owItems += '</td></tr>';
+
+                                //Adding rank
+                                owItems += '<tr><td>Rank:</td><td>';
+                                owItems += '*rank*';
+                                owItems += '</td></tr>';
+
+                                //Adding rank
+                                owItems += '<tr><td>Eco-Points:</td><td>';
+                                owItems += userObject.get("ecoPoints");
+                                owItems += '</td></tr>';
+
+                                //Adding rank
+                                owItems += '<tr><td>Support-Points:</td><td>';
+                                owItems += userObject.get("SupportPoints");
+                                owItems += '</td></tr>';
+
+                                //Adding stuff
+                                owItems += '</tbody></table></div><div class="controlPanel"><div class="validBtn"><img src="images/icons/ic_thumb_down_white_48px_red.png"></div><div class="notValidBtn"><img src="images/icons/ic_thumb_up_white_48px_gold.png"></div><div class="skipBtn">SKIP</div></div></div>';
+                            }).then(function () {
+                                console.log("Items added");
+                                $("#overwatchContent").html(owItems);
+                            }, function (error) {
+                                console.log(error);
+                            });
+
+                            loop1(i + 1);
+                        });
+                    }
+                }
+            });
+
+            $(".validBtn > img").click(function () {
+                console.log("Valid button clicked");
+                $(this).parent().parent().animate({
+                    left: "50",
+                    opacity: "0"
+                }, 300, function () {
+                    $(this).remove();
+                });
+            });
+            $(".notValidBtn > img").click(function () {
+                console.log("Not valid button clicked");
+                $(this).parent().parent().animate({
+                    left: "50",
+                    opacity: "0"
+                }, 300, function () {
+                    $(this).remove();
+                });
+            });
+            $(".skipBtn").click(function () {
+                console.log("Skip button clicked");
+                $(this).parent().parent().animate({
+                    left: "50",
+                    opacity: "0"
+                }, 300, function () {
+                    $(this).remove();
+                });
+            });
+
+            $(".profileBtn").click(function () {
+                window.location.replace("profile.html?user=" + Parse.User.current().id);
+            });
+            $(".ecowallBtn").click(function () {
+                window.location.replace("ecowall.html");
+            });
+            $(".owBtn").click(function () {
+                window.location.replace("overwatch.html");
+            });
+            //==============================
+            function resize() {
+                console.log("Resize");
+                $("#menu").css("left", ($("#header").width() - $("#logo").width() - $("#menu").width()) / 2 + "px");
+                $("#menu").css("top", ($("#header").height() - $("#menu").height()) / 2 + "px");
+            }
+            resize();
+
+        });
+    </script>
+</body>
+
+</html>

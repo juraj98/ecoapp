@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ecoapp.EcoWallFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ecoWallRecyclerView"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressBar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/stampLayout"
+        android:background="@drawable/stamp_shape"
+        android:paddingRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/progressBar"
+            android:layout_alignEnd="@+id/progressBar"
+            android:src="@drawable/placeholderprofilepic"
+            android:id="@+id/stampImageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Stamp Unlocked!"
+            android:id="@+id/textView2"
+            android:textSize="15dp"
+            android:textColor="@color/colorIconsText"
+            android:gravity="center_vertical|right"
+            android:padding="0dp"
+            android:layout_marginLeft="5dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/noFeedMsg"
+        android:src="@drawable/no_friends_feed"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:padding="15dp" />
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Juraj/Documents/Eco%20App%20V0.4/ParseStarterProject/src/main/res/layout/fragment_eco_wall.xml -->

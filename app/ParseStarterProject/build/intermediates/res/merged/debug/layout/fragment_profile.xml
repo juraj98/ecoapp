@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ecoapp.ProfileFragment">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/placeholderprofilepic"
+                android:layout_margin="5dp"
+                android:id="@+id/imageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Name Surname"
+                android:id="@+id/textView4"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_toEndOf="@+id/imageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Eco Points"
+                android:id="@+id/textView5"
+                android:layout_below="@+id/textView4"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_toEndOf="@+id/imageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Support Points"
+                android:id="@+id/textView6"
+                android:layout_below="@+id/textView5"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_toEndOf="@+id/imageView" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Juraj/Documents/Eco%20App%20V0.4/ParseStarterProject/src/main/res/layout/fragment_profile.xml -->

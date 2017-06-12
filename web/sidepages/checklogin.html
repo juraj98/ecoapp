@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Eco App</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    
+</head>
+</html>
+<script type="text/javascript">
+        $(document).ready(function () {
+            Parse.initialize("1T0Bw126baBUI7E8stSggJSQInGkwWY38I97JLcA", "iEaPN97l7Hc8Sgw7ZoE4llTPITzeXeT8QPNWHJ8o");
+            var currentUser = Parse.User.current();
+            if (currentUser) {
+                console.log("User logged in");
+            }
+            else {
+                console.log("User isn't logged in");
+            }
+        });
+</script>

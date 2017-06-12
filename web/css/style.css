@@ -1,0 +1,1090 @@
+/*
+    @dark_primary: #388E3C
+    @PRIMARY: #4CAF50
+    @ligh_primary: #C8E6C9
+    @ACCENT: #FFC107
+    @primary_text: #212121
+    @secoundary_text: #727272
+    @devider: #B6B6B6
+    @text/icons: #FFFFFF
+    
+
+*/
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: roboto;
+}
+
+#main {
+    background: url(../images/background.jpg) no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+#googlePlayBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 10;
+}
+
+input::-webkit-input-placeholder {
+    color: white;
+    font-weight: 700;
+}
+
+input:-moz-placeholder {
+    /* Firefox 18- */
+    color: white;
+    font-weight: 700;
+}
+
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: white;
+    font-weight: 700;
+}
+
+input:-ms-input-placeholder {
+    color: white;
+    font-weight: 700;
+}
+
+
+/****************HEADER***************/
+
+#header {
+    height: 75px;
+    width: 100%;
+    background-color: green;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background: #4CAF50;
+}
+
+#header > a > img {
+    margin: 5px;
+    height: 65px;
+    float: left;
+}
+
+#header > center > #menu {
+    position: absolute;
+}
+
+#header > center > #menu > .menuitem {
+    color: white;
+    float: left;
+    font-weight: 300;
+    margin: 5px 0px;
+    cursor: pointer;
+}
+
+#header > center > #menu > .menuitem:hover {
+    text-decoration: underline;
+}
+
+#header > center > #menu > .menuitem:active {
+    text-decoration: none;
+}
+
+#header > center > #menu > #active {
+    text-decoration: underline;
+}
+
+#header > center > #menu > .devider {
+    color: white;
+    float: left;
+    font-weight: 300;
+    margin: 5px;
+    cursor: default;
+}
+
+#header > #userArea > #logoffBtn {
+    height: 50px;
+    line-height: 50px;
+    float: right;
+    width: 75px;
+    background-color: #FFFFFF;
+    color: #4CAF50;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 12.5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+}
+
+#header > #userArea > #logoffBtn:hover {
+    text-decoration: underline;
+}
+
+#header > #userArea > #logoffBtn:active {
+    height: 48px;
+    width: 73px;
+    margin: 1;
+    margin-top: 13.5px;
+}
+
+
+/**************IMAGEZOOM*************/
+
+#imageZoomBg {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: black;
+    opacity: 0.8;
+}
+
+#smallImg {
+    z-index: 101;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+
+/*************OVERWATCH*************/
+
+#overwatchContent {
+    width: 1000px;
+    background-color: #4CAF50;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+#overwatchContent > .overwatchItem {
+    width: 990px;
+    height: 330px;
+    margin: 5px;
+    background-color: white;
+    position: relative;
+}
+
+#overwatchContent > .overwatchItem > .images {
+    height: 320px;
+    width: 320px;
+    margin: 5px;
+    float: left;
+    background-color: white;
+}
+
+#overwatchContent > .overwatchItem > .images > .mainImg {
+    height: 240px;
+    width: 240px;
+    float: left;
+    cursor: pointer;
+}
+
+#overwatchContent > .overwatchItem >.images > .secoundaryImg {
+    height: 80px;
+    width: 80px;
+    float: left;
+    cursor: pointer;
+}
+
+#overwatchContent > .overwatchItem >.images >.mainImg:hover {
+    height: 236px;
+    width: 236px;
+    margin: 2px;
+}
+
+#overwatchContent > .overwatchItem >.images > .secoundaryImg:hover {
+    height: 76px;
+    width: 76px;
+    margin: 2px;
+}
+
+#overwatchContent > .overwatchItem >.images >.mainImg:active {
+    height: 232px;
+    width: 232px;
+    margin: 4px;
+}
+
+#overwatchContent > .overwatchItem >.images > .secoundaryImg:active {
+    height: 72px;
+    width: 72px;
+    margin: 4px;
+}
+
+#overwatchContent > .overwatchItem >.stats {
+    height: 320px;
+    width: 320px;
+    margin: 5px;
+    float: left;
+}
+
+#overwatchContent > .overwatchItem >.stats > table {
+    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #4CAF50;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel {
+    height: 320px;
+    width: 320px;
+    margin: 5px;
+    float: left;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.validBtn {
+    height: 130px;
+    width: 130px;
+    margin: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.notValidBtn {
+    height: 130px;
+    width: 130px;
+    margin: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.validBtn > img {
+    height: 100%;
+    width: 100%;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.notValidBtn > img {
+    height: 100%;
+    width: 100%;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.skipBtn {
+    height: 160px;
+    width: 320px;
+    float: left;
+    cursor: pointer;
+    font-size: 5em;
+    color: #4CAF50;
+    text-align: center;
+    line-height: 160px;
+    font-weight: 700;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.skipBtn:hover {
+    text-decoration: underline;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.skipBtn:active {
+    text-decoration: none;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.validBtn:hover {
+    height: 120px;
+    width: 120px;
+    margin: 15px;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.notValidBtn:hover {
+    height: 120px;
+    width: 120px;
+    margin: 15px;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.validBtn:active {
+    height: 110px;
+    width: 110px;
+    margin: 20px;
+}
+
+#overwatchContent > .overwatchItem >.controlPanel >.notValidBtn:active {
+    height: 110px;
+    width: 110px;
+    margin: 20px;
+}
+
+
+/*OVERWATCH*/
+
+
+/****************CONTENT***************/
+
+#mainContent {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.70);
+    position: absolute;
+    z-index: 2;
+    padding: 50px 10px;
+    padding-top: 20px;
+    width: 700px;
+    text-align: center;
+    color: #4CAF50;
+}
+
+#mainContent > p {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 1.3em;
+}
+
+#mainContent > p > u {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#mainContent > p > u:hover {
+    text-decoration: underline;
+}
+
+#mainContent > img {
+    width: 150px;
+    margin: 5px;
+}
+
+
+/*************TILES***************/
+
+.parallexal {
+    height: 300px;
+    width: 100%;
+    background-color: saddlebrown;
+}
+
+.bigone {
+    height: 100vh;
+    width: 100%;
+}
+
+#about {
+    background-color: #4CAF50;
+}
+
+#firstparallexal {
+    margin-top: 100vh;
+}
+
+#supportus {
+    background-color: white;
+}
+
+#contactus {
+    background-color: #BDBDBD;
+}
+
+#programmers {
+    background-color: #3F51B5;
+}
+
+#download {
+    background-color: #4CAF50;
+}
+
+
+/****************USER*AREA***************/
+
+#userArea {
+    height: 75px;
+    width: 200px;
+    float: right;
+    margin-right: 10px;
+}
+
+#userArea > #loginBtn {
+    position: absolute;
+    top: 10px;
+    right: 110px;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    line-height: 50px;
+    background-color: white;
+    overflow: hidden;
+}
+
+#userArea > #loginBtn:active {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#userArea > #loginBtn > .lbText {
+    position: relative;
+    float: right;
+    cursor: pointer;
+    width: 100px;
+}
+
+#userArea > #loginBtn > .lbText:hover {
+    font-weight: 700;
+    text-decoration: underline;
+    transition: 0;
+}
+
+#userArea > #loginBtn > .lbTextClicked {
+    position: relative;
+    float: right;
+    cursor: pointer;
+    width: 100px;
+    background-color: #FFC107;
+    display: block;
+    right: 0px;
+    transition: 1s;
+    right: 10px;
+    top: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+#userArea > #loginBtn > .lbTextClicked:hover {
+    transition: 0s;
+}
+
+#userArea > #loginBtn > #lbForm {
+    height: 75px;
+    width: 300px;
+    display: none;
+}
+
+#userArea > #loginBtn > #lbProblem {
+    width: 100px;
+    height: 15px;
+    font-size: 10px;
+    line-height: 15px;
+    float: right;
+    color: #727272;
+    position: relative;
+    right: 10px;
+    bottom: 25px;
+    display: none;
+    cursor: pointer;
+}
+
+#userArea > #loginBtn > #lbProblem:hover {
+    text-decoration: underline;
+}
+
+#userArea > #loginBtn > #lbForm > form > #username {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 0px;
+    height: 20.5px;
+    padding: 1px;
+    padding-left: 3px;
+    background-color: #FFC107;
+}
+
+#userArea > #loginBtn > #lbForm > form > #password {
+    position: absolute;
+    top: 42.5px;
+    left: 10px;
+    border: 0px;
+    height: 20.5px;
+    padding: 1px;
+    padding-left: 3px;
+    background-color: #FFC107;
+}
+
+#fullscreen {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 14;
+    display: none;
+}
+
+#userArea > #signinBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #FFC107;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+#userArea > #badLogin {
+    position: absolute;
+    top: 75px;
+    background-color: #F44336;
+    width: 300px;
+    right: 0;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.9em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 20px;
+    line-height: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: none;
+}
+.sbText {
+    height: 50px;
+    width: 100px;
+    position: relative;
+    cursor: pointer;
+}
+
+.sbText:hover {
+    font-weight: 700;
+    text-decoration: underline;
+    transition: 0s;
+}
+
+.sbText:active {
+    text-decoration: none;
+}
+
+.sbTextClicked {
+    height: 50px;
+    width: 100px;
+    transition: 0.5s;
+    background-color: #FFFFFF;
+}
+
+.sbTextClicked:hover {
+    transition: 0s;
+}
+
+#sbArea {
+    padding: 0;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    height: 380px;
+    display: none;
+    color: #FFFFFF;
+}
+
+#sbArea input::-webkit-input-placeholder {
+    color: #FFC107;
+    font-weight: 700;
+}
+
+#sbArea input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #FFC107;
+    font-weight: 700;
+}
+
+#sbArea input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #FFC107;
+    font-weight: 700;
+}
+
+#sbArea input:-ms-input-placeholder {
+    color: #FFC107;
+    font-weight: 700;
+}
+
+#sbArea h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#NameInput {
+    float: left;
+    width: 110px;
+    margin: 2.5px;
+    margin-left: 25px;
+    margin-right: 5px;
+    border: 0;
+    padding: 5px;
+    border: 0;
+}
+
+#SurnameInput {
+    float: left;
+    width: 110px;
+    margin: 2.5px;
+    margin-left: 5px;
+    margin-right: 25px;
+    padding: 5px;
+    border: 0;
+}
+
+#BadName {
+    width: 110px;
+    margin: 2.5px;
+    margin-left: 26px;
+    margin-right: 5px;
+    font-size: 8px;
+    line-height: 8px;
+    color: red;
+    float: left;
+    text-align: left;
+    display: none;
+}
+
+#BadSurname {
+    width: 110px;
+    margin: 2.5px;
+    margin-left: 15px;
+    margin-right: 25px;
+    font-size: 8px;
+    line-height: 8px;
+    color: red;
+    float: left;
+    text-align: left;
+    display: none;
+}
+
+#UsernameInput {
+    float: left;
+    width: 240px;
+    margin: 2.5px 25px;
+    padding: 5px;
+    border: 0;
+}
+
+#BadUsername {
+    width: 240px;
+    margin: 2.5px 26px;
+    font-size: 8px;
+    line-height: 8px;
+    color: red;
+    float: left;
+    text-align: left;
+    display: none;
+}
+
+#EmailInput {
+    float: left;
+    width: 240px;
+    margin: 2.5px 25px;
+    padding: 5px;
+    border: 0;
+}
+
+#BadEmail {
+    width: 240px;
+    margin: 2.5px 26px;
+    font-size: 8px;
+    line-height: 8px;
+    color: red;
+    float: left;
+    text-align: left;
+    display: none;
+}
+
+#PassInput {
+    float: left;
+    width: 240px;
+    margin: 2.5px 25px;
+    padding: 5px;
+    border: 0;
+}
+
+#BadPass {
+    width: 240px;
+    margin: 2.5px 26px;
+    font-size: 8px;
+    line-height: 8px;
+    color: red;
+    float: left;
+    text-align: left;
+    display: none;
+}
+
+#ConfPassInput {
+    float: left;
+    width: 240px;
+    margin: 2.5px 25px;
+    padding: 5px;
+    border: 0;
+}
+
+#BadConfPass {
+    width: 240px;
+    margin: 2.5px 26px;
+    font-size: 8px;
+    line-height: 8px;
+    color: red;
+    float: left;
+    text-align: left;
+    display: none;
+}
+
+#sbClear {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#sbClear:hover {
+    opacity: 1;
+}
+
+#sbClear:active {
+    height: 26px;
+    margin: 2px;
+}
+
+#sbTerms {
+    width: 250px;
+    height: 150px;
+    padding: 20px;
+    line-height: 1;
+    float: left;
+    text-align: justify;
+    text-align-last: left;
+}
+
+#sbTerms u {
+    color: #4CAF50;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#sbTerms u:hover {
+    text-decoration: none;
+}
+
+#sbTerms u:active {
+    font-weight: 400;
+}
+
+#profileArea {
+    margin-top: 150px;
+    width: 1000px;
+    min-height: 500px;
+    margin-bottom: 100px;
+    overflow: auto;
+    background-color: #4CAF50;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#profileArea > #mainProfile {
+    height: 400px;
+    margin: 50px;
+    width: 900px;
+    float: left;
+}
+
+#profileArea > #mainProfile > #profilePic {
+    height: 250px;
+    width: 250px;
+    float: left;
+}
+
+#profileArea > #mainProfile > #SecretBoxArea {
+    height: 150px;
+    width: 250px;
+    position: relative;
+    top: 250px;
+}
+
+#profileArea > #mainProfile > #data {
+    height: 350px;
+    width: 300px;
+    position: relative;
+    top: -150px;
+    float: left;
+    padding: 25px;
+    padding-top: 0px;
+}
+
+#profileArea > #mainProfile > #data > h1 {
+    margin: 0;
+    color: white;
+    text-decoration: underline;
+}
+
+#profileArea > #mainProfile > #data > h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 1.3em;
+}
+
+#profileArea > #mainProfile > #data > h3 {
+    margin: 0;
+    color: white;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+#profileArea > #mainProfile > #data > #addFriend {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    float: left;
+}
+
+#profileArea > #mainProfile > #data > #addFriend:hover {
+    border-bottom: 2px solid #fff;
+}
+
+#profileArea > #mainProfile > #data > #addFriend:active {
+    border-bottom: none;
+}
+
+#profileArea > #mainProfile > #data > #addFriend > img {
+    height: 15px;
+    float: left;
+    margin-right: 5px;
+}
+
+#profileArea > #mainProfile > #data > #blockPerson {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    height: 15px;
+    cursor: pointer;
+    float: left;
+    position: relative;
+    top: -7px;
+}
+
+#profileArea > #mainProfile > #data > #blockPerson:hover {
+    border-bottom: 2px solid #fff;
+}
+
+#profileArea > #mainProfile > #data > #blockPerson:active {
+    border-bottom: none;
+}
+
+#profileArea > #mainProfile > #data > #blockPerson > img {
+    height: 15px;
+    float: left;
+    margin-right: 5px;
+}
+
+#profileArea > #mainProfile > #data > #ecoPoints {
+    margin: 0;
+    color: #FFC107;
+    font-size: 1.3em;
+}
+
+#profileArea > #mainProfile > #data > #supportPoints {
+    margin: 0;
+    color: #9C27B0;
+    font-size: 1.3em;
+}
+
+#profileArea > #mainProfile > #achivements {
+    height: 400px;
+    width: 300px;
+    position: relative;
+    top: -150px;
+    float: left;
+}
+
+#profileArea > #mainProfile > #achivements > img {
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+#profileGallery > img {
+    float: left;
+    max-height: 246px;
+    max-width: 246px;
+    margin: 2px;
+    background-color: #388E3C;
+}
+
+
+/**************ECOWALL**************/
+
+#ecowallContent {
+    width: 1000px;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ecowallContent > #friendsFeed {
+    width: 650px;
+    float: left;
+    background-color: green;
+    opacity: 0.5;
+    margin-bottom: 75px;
+}
+
+#ecowallContent > #friendsFeed > img {
+    width: 325px;
+    float: left;
+}
+
+#ecowallContent > #status {
+    width: 340px;
+    float: right;
+    height: 120px;
+    color: white;
+    margin: 5px;
+    background-color: #4CAF50;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#ecowallContent > #status > p {
+    margin-left: 25px;
+    height: 20px;
+    font-size: 20px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    line-height: 20px;
+}
+
+#ecowallContent > #friendRequests {
+    width: 340px;
+    float: right;
+    min-height: 75px;
+    margin: 5px;
+    background-color: #4CAF50;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#ecowallContent > #friendRequests > #foreverAlone {
+    font-size: 25px;
+    color: #ffffff;
+    opacity: 0.3;
+    text-align: center;
+    margin: 25px 0;
+    padding: 0;
+}
+
+#ecowallContent > #friendRequests > #newRequest {
+    height: 75px;
+    width: 100%;
+    border-bottom: 1px solid #B6B6B6;
+}
+
+#ecowallContent > #friendRequests > #newRequest > img {
+    height: 50px;
+    width: 50px;
+    margin: 12.5px;
+    float: left;
+}
+
+#ecowallContent > #friendRequests > #newRequest > #data {
+    float: left;
+}
+#ecowallContent > #friendRequests > #newRequest > #data > h1, h2 {
+    height: 15px;
+}
+
+#ecowallContent > #friendRequests > #newRequest > .accept {
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 25px;
+    height: 30px;
+    width: 60px;
+    background-color: #FFC107;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#ecowallContent > #friendRequests > #newRequest > .delete {
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 12.5px;
+    height: 30px;
+    width: 60px;
+    background-color: #ffffff;
+    color: #4CAF50;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#ecowallContent > #friendRequests > #newRequest > .accept:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+#ecowallContent > #friendRequests > #newRequest > .delete:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+#ecowallContent > #friendRequests > #newRequest > .accept:active {
+    height: 28px;
+    line-height: 28px;
+    width: 58px;
+    margin: 1px;
+}
+
+#ecowallContent > #friendRequests > #newRequest > .delete:active {
+    height: 28px;
+    line-height: 28px;
+    width: 58px;
+    margin: 1px;
+}
+
+#ecowallContent > #friendRequests > #newRequest h1 {
+    color: #FFC107;
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0px;
+    margin-top: 12.5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#ecowallContent > #friendRequests > #newRequest h2 {
+    color: white;
+    font-size: 15px;
+    line-height: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+}
+
+#ecowallContent > #achivements {
+    width: 350px;
+    float: right;
+    height: 200px;
+    background-color: brown;
+    opacity: 0.5;
+}
+
+#ecowallContent > #comunity {
+    width: 350px;
+    float: right;
+    height: 200px;
+    background-color: purple;
+    opacity: 0.5;
+}
